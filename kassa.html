@@ -1,0 +1,40 @@
+<!doctype html><html lang="sv"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kassa (demo) | Rostvind</title><meta name="description" content="Demo-kassa – inga betalningar.">
+<meta name="robots" content="noindex,nofollow"><link rel="canonical" href="https://oskaraxels.github.io/rostvind/kassa.html">
+<meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:site_name" content="Rostvind Kafferosteri">
+<meta property="og:title" content="Kassa (demo) | Rostvind"><meta property="og:description" content="Demo-kassa – inga betalningar."><meta property="og:image" content="https://oskaraxels.github.io/rostvind/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#1f3d30">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='16' rx='9' ry='12' fill='%23a63d1c' transform='rotate(30 16 16)'/%3E%3Cpath d='M11 8 C 20 14, 12 18, 21 24' stroke='%23fff' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/InterTight.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="js/config.js"></script><script src="js/tracking.js"></script><script src="js/shop.js"></script>
+</head><body>
+<div class="demo-bar"><b>Demo-butik</b> i ett portfolioprojekt – Rostvind är ett fiktivt företag. Inga köp eller betalningar genomförs.</div>
+<header class="site"><div class="wrap"><a class="logo" href="index.html"><i></i>Rostvind</a><nav><a href="butik.html" class="">Kaffe</a><a href="prenumeration.html" class="">Prenumeration</a><a href="kontor.html" class="">Kontorskaffe</a><a class="cart-link" href="varukorg.html" aria-label="Varukorg">Varukorg<span data-cart-count>0</span></a></nav></div></header>
+<main><section><div class="wrap" style="max-width:980px"><div class="eyebrow">Kassa</div><h1 style="font-size:clamp(34px,4.5vw,54px)">Kassa</h1>
+<div class="demo-box"><b>Demo-kassa.</b> Ingen betalning tas emot och inga kort- eller bankuppgifter efterfrågas. Knappen nedan skapar bara en demo-order i webbläsaren så att köp-eventet kan testas.</div>
+<div class="pd" style="gap:36px"><form class="f" id="co" novalidate><div class="steps"><span class="on" id="s1">1. Leverans</span><span>→</span><span id="s2">2. Betalning (demo)</span></div>
+<div id="step1"><label for="c-email">E-post</label><input id="c-email" type="email" name="email" autocomplete="email" placeholder="namn@exempel.se">
+<div class="row"><div><label for="c-name">Namn</label><input id="c-name" name="name" autocomplete="name"></div><div><label for="c-zip">Postnummer</label><input id="c-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div></div>
+<label>Leveranssätt</label><div class="pay"><label><input type="radio" name="ship" value="Ombud" checked> Utlämningsställe (1–3 dagar)</label><label><input type="radio" name="ship" value="Brevlåda"> Brevlådan (1–2 dagar)</label></div>
+<button class="btn" type="button" id="next" style="width:100%;justify-content:center;margin-top:14px">Fortsätt till betalning</button></div>
+<div id="step2" hidden><label>Betalsätt (demo – inget debiteras)</label><div class="pay"><label><input type="radio" name="pay" value="Kort" checked> Kort (demo)</label><label><input type="radio" name="pay" value="Swish"> Swish (demo)</label><label><input type="radio" name="pay" value="Faktura"> Faktura (demo)</label></div>
+<button class="btn" type="submit" style="width:100%;justify-content:center;margin-top:14px">Lägg demo-order (ingen betalning)</button></div><div class="err" id="c-err" role="alert"></div></form>
+<div id="co-sum" class="sum" style="margin:0"></div></div></div></section></main>
+<footer class="site"><div class="wrap"><span>© 2026 Rostvind Kafferosteri (fiktivt) · Portfolioprojekt av Oskar Axelsson<br><span class="ai-note">Alla foton är AI-genererade. Inga riktiga produkter säljs.</span></span><span><a href="integritet.html">Integritet &amp; cookies</a> · <button onclick="rvOpenConsent()">Ändra cookieval</button></span></div></footer>
+<script>document.addEventListener('rv:ready',function(){var c=RV.get(),t=RV.totals(c),f=document.getElementById('co'),err=document.getElementById('c-err');
+var s=document.getElementById('co-sum');if(!c.length){f.innerHTML='<p class="lead">Varukorgen är tom. <a href="butik.html">Till butiken →</a></p>';s.remove();return;}
+s.innerHTML=c.map(function(l){var p=RV.CATALOG[l.slug];return '<div><span>'+l.qty+' × '+p.item_name+'</span><b>'+RV.kr(p.price*l.qty)+'</b></div>';}).join('')+'<div><span>Frakt</span><b>'+(t.ship?RV.kr(t.ship):'Fri')+'</b></div><div class="tot"><span>Totalt</span><b>'+RV.kr(t.total)+'</b></div>';
+var items=RV.itemsOf(c);
+document.getElementById('next').onclick=function(){if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())){err.textContent='Fyll i en giltig e-post.';return;}err.textContent='';
+rvTrack('add_shipping_info',{currency:'SEK',value:t.sub,shipping_tier:f.querySelector('[name=ship]:checked').value,items:items});
+document.getElementById('step1').hidden=true;document.getElementById('step2').hidden=false;document.getElementById('s2').className='on';};
+f.addEventListener('submit',function(e){e.preventDefault();if(sessionStorage.getItem('rv_placing'))return;sessionStorage.setItem('rv_placing','1');
+rvTrack('add_payment_info',{currency:'SEK',value:t.sub,payment_type:f.querySelector('[name=pay]:checked').value+' (demo)',items:items});
+var id='DEMO-'+Date.now().toString(36).toUpperCase();
+rvTrack('purchase',{transaction_id:id,affiliation:'Rostvind webbshop (demo)',currency:'SEK',value:t.sub,shipping:t.ship,items:items});
+var sub=c.filter(function(l){return RV.CATALOG[l.slug].subscription;})[0];
+if(sub){var p=RV.CATALOG[sub.slug];rvTrack('subscribe',{currency:'SEK',value:p.price,predicted_ltv:p.price*6,subscription_plan:p.item_id,items:[RV.item(sub.slug,1,sub.variant)]});}
+sessionStorage.setItem('rv_order',JSON.stringify({id:id,total:t.total,lines:c,sub:!!sub}));RV.save([]);
+setTimeout(function(){sessionStorage.removeItem('rv_placing');location.href='order.html';},400);});});</script></body></html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /varukorg.html
+Disallow: /kassa.html
+Disallow: /order.html
+
+Sitemap: https://oskaraxels.github.io/rostvind/sitemap.xml

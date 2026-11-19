@@ -1,0 +1,20 @@
+<!doctype html><html lang="sv"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orderbekräftelse (demo) | Rostvind</title><meta name="description" content="Demo-orderbekräftelse.">
+<meta name="robots" content="noindex,nofollow"><link rel="canonical" href="https://oskaraxels.github.io/rostvind/order.html">
+<meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:site_name" content="Rostvind Kafferosteri">
+<meta property="og:title" content="Orderbekräftelse (demo) | Rostvind"><meta property="og:description" content="Demo-orderbekräftelse."><meta property="og:image" content="https://oskaraxels.github.io/rostvind/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#1f3d30">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='16' rx='9' ry='12' fill='%23a63d1c' transform='rotate(30 16 16)'/%3E%3Cpath d='M11 8 C 20 14, 12 18, 21 24' stroke='%23fff' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/InterTight.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="js/config.js"></script><script src="js/tracking.js"></script><script src="js/shop.js"></script>
+</head><body>
+<div class="demo-bar"><b>Demo-butik</b> i ett portfolioprojekt – Rostvind är ett fiktivt företag. Inga köp eller betalningar genomförs.</div>
+<header class="site"><div class="wrap"><a class="logo" href="index.html"><i></i>Rostvind</a><nav><a href="butik.html" class="">Kaffe</a><a href="prenumeration.html" class="">Prenumeration</a><a href="kontor.html" class="">Kontorskaffe</a><a class="cart-link" href="varukorg.html" aria-label="Varukorg">Varukorg<span data-cart-count>0</span></a></nav></div></header>
+<main><section style="min-height:60vh"><div class="wrap" style="max-width:760px;text-align:center"><div class="eyebrow">Demo-order skapad</div><h1 style="margin:12px auto" id="o-h">Tack för din (demo)beställning!</h1>
+<p class="lead" style="margin:0 auto;color:var(--muted)" id="o-p">Ingen betalning har tagits och inget skickas – det här är en demo-butik.</p>
+<p style="margin-top:28px"><a class="btn" href="butik.html" data-track="cta_click" data-label="Fortsätt handla" data-location="order_confirmation">Fortsätt handla</a></p></div></section>
+<script>var o=JSON.parse(sessionStorage.getItem('rv_order')||'null');if(o){document.getElementById('o-h').textContent='Order '+o.id+' – tack!';document.getElementById('o-p').textContent='Totalt '+o.total+' kr'+(o.sub?' · prenumeration startad (demo)':'')+'. Ingen betalning har tagits och inget skickas – det här är en demo-butik.';}</script></main>
+<footer class="site"><div class="wrap"><span>© 2026 Rostvind Kafferosteri (fiktivt) · Portfolioprojekt av Oskar Axelsson<br><span class="ai-note">Alla foton är AI-genererade. Inga riktiga produkter säljs.</span></span><span><a href="integritet.html">Integritet &amp; cookies</a> · <button onclick="rvOpenConsent()">Ändra cookieval</button></span></div></footer>
+</body></html>
